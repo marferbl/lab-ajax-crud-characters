@@ -33,10 +33,13 @@ window.addEventListener("load", () => {
     event.preventDefault();
     let inputId = document.querySelector(".operation.delete input").value;
 
-    charactersAPI.deleteOneRegister(inputId).then((res) => {
-      document.querySelector("#delete-one").style.background = "green";
-      console.log("Elemento borrado", res);
-    });
+    charactersAPI
+      .deleteOneRegister(inputId)
+      .then((res) => {
+        document.querySelector("#delete-one").style.background = "green";
+        console.log("Elemento borrado", res);
+      })
+      .catch((err) => (document.querySelector("#delete-one").style.background = "red"));
   });
 
   document.getElementById("edit-character-form").addEventListener("submit", function (event) {
